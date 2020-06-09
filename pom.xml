@@ -6,8 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.3.0.RELEASE</version>
     </parent>
     <groupId>ua.pp.rieltorzlo</groupId>
     <artifactId>rieltorzlo</artifactId>

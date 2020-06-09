@@ -15,9 +15,7 @@ public class Add {
 
     public Add() {
     }
-
-    public Add(Long id, String header, String description, String author) {
-        this.id = id;
+    public Add( String header, String description, String author) {
         this.header = header;
         this.description = description;
         this.author = author;
@@ -38,7 +36,6 @@ public class Add {
     public String getAuthor() {
         return author;
     }
-
 
     @Override
     public String toString() {

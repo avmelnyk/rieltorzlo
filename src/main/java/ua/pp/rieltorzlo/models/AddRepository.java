@@ -5,5 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface AddRepository extends CrudRepository<Add, Long> {
-    List<Add>finByName(String name);
+    List<Add>findAllByAuthor(String author);
+    Add findById(long id);
 }
