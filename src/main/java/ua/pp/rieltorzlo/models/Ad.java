@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "adds")
-public class Add {
+public class Ad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,9 +13,9 @@ public class Add {
     private String description;
     private String author;
 
-    public Add() {
+    public Ad() {
     }
-    public Add( String header, String description, String author) {
+    public Ad(String header, String description, String author) {
         this.header = header;
         this.description = description;
         this.author = author;
