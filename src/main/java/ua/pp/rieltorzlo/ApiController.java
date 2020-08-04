@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ua.pp.rieltorzlo.models.Ad;
 import ua.pp.rieltorzlo.models.AddRepository;
+import ua.pp.rieltorzlo.models.User;
+import ua.pp.rieltorzlo.models.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,6 +17,9 @@ public class ApiController {
 
     @Autowired
     AddRepository repository;
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping("/")
     public String homePage(){
         return "Hello! This is Rieltorzlo start page!";
@@ -49,5 +54,17 @@ public class ApiController {
         return id;
     }
 
+    @PostMapping("/users")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Long createUser(@RequestBody User user){
+        return userRepository.save(user).getId();
+    }
+
+
+    @GetMapping("/users")
+    @ResponseStatus(HttpStatus.OK)
+    public List<User> getUsers(){
+        return (List<User>) userRepository.findAll();
+    }
 
 }

@@ -3,7 +3,7 @@ package ua.pp.rieltorzlo.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "adds")
+@Table(name = "ads")
 public class Ad {
 
     @Id
@@ -11,14 +11,14 @@ public class Ad {
     private Long id;
     private String header;
     private String description;
-    private String author;
+    private Long authorId;
 
     public Ad() {
     }
-    public Ad(String header, String description, String author) {
+    public Ad(String header, String description, Long authorId) {
         this.header = header;
         this.description = description;
-        this.author = author;
+        this.authorId = authorId;
     }
 
     public Long getId() {
@@ -33,8 +33,12 @@ public class Ad {
         return description;
     }
 
-    public String getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
     @Override
@@ -43,7 +47,7 @@ public class Ad {
                 "id=" + id +
                 ", header='" + header + '\'' +
                 ", description='" + description + '\'' +
-                ", author='" + author + '\'' +
+                ", authorId='" + authorId + '\'' +
                 '}';
     }
 }
