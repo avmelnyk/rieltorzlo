@@ -1,13 +1,13 @@
 package ua.pp.rieltorzlo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue()
@@ -16,6 +16,9 @@ public class User {
     private String lastName;
     private String phoneNumber;
     private String email;
+
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Ad> ads;
 
     public User(){}
 
@@ -62,6 +65,14 @@ public class User {
         this.email = email;
     }
 
+    public Set<Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(Set<Ad> ads) {
+        this.ads = ads;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -71,5 +82,23 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(phoneNumber, user.phoneNumber) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(ads, user.ads);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, phoneNumber, email, ads);
     }
 }
